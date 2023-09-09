@@ -1,11 +1,19 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 
-app.use( (req, res,next) => {
+app.use(bodyParser.urlencoded({ extended:false })); 
+app.use('/m',(req, res,next) => {
     console.log('Running');
-    next();
+    res.send('This is the introduction to express');
+    
+});
+app.use('/add-product', (req, res,next) => {
+    res.send('<form method="POST" action="/product"><input type="text" name="title" ><button type="subit">AddProduct</button></form>');
 });
 
-app.use( (req, res,next) => {
-        res.send('<h1>The return of eng paul to web development<h1/>');});
+app.use('/product', (req, res,next) => {
+    console.log(req.body);
+    res.redirect('/m');
+});
 app.listen(3000);
