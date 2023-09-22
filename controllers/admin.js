@@ -1,4 +1,4 @@
-const Book = require('../models/product');
+const Product = require('../models/product');
  const Sequelize = require('sequelize');
  const sequelize = require('../util/database');
 
@@ -16,26 +16,17 @@ exports.postAddProduct = (req, res, next) => {
   const price = req.body.price;
   const description = req.body.description;
 
-//   Product.create({
-//     title:title,
-//     price:price,
-//     imageUrl:imageUrl,
-//     description:description
-//   }).then(result=>{
-//     console.log(result)
-//   })
-//    .catch(err=>{console.log(err)});
-// };
-  Book.create({
-
-   title: "title",
-   author: "imageUrl",
-   release_date: "price",
-   subject: "description"
-  }).then(res => {
-    console.log(res)}).catch((error) => {
-      console.error('Failed to create a new record : ', error);});
-    };
+  Product.create({
+    title:title,
+    price:price,
+    imageUrl:imageUrl,
+    description:description
+  }).then(result=>{
+    console.log(result)
+  })
+   .catch(err=>{console.log(err)});
+};
+  
 exports.getEditProduct = (req, res, next) => {
   const editMode = req.query.edit;
   if (!editMode) {
