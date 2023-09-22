@@ -1,6 +1,6 @@
-const Product = require('../models/product');
-// const Sequelize = require('sequelize');
-// const sequelize = require('../util/database');
+const Book = require('../models/product');
+ const Sequelize = require('sequelize');
+ const sequelize = require('../util/database');
 
 exports.getAddProduct = (req, res, next) => {
   res.render('admin/edit-product', {
@@ -15,17 +15,27 @@ exports.postAddProduct = (req, res, next) => {
   const imageUrl= req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
-  Product.create({
-    title:title,
-    price:price,
-    imageUrl:imageUrl,
-    description:description
-  }).then(result=>{
-    console.log(result)
-  })
-   .catch(err=>{console.log(err)});
-};
 
+//   Product.create({
+//     title:title,
+//     price:price,
+//     imageUrl:imageUrl,
+//     description:description
+//   }).then(result=>{
+//     console.log(result)
+//   })
+//    .catch(err=>{console.log(err)});
+// };
+  Book.create({
+
+   title: "title",
+   author: "imageUrl",
+   release_date: "price",
+   subject: "description"
+  }).then(res => {
+    console.log(res)}).catch((error) => {
+      console.error('Failed to create a new record : ', error);});
+    };
 exports.getEditProduct = (req, res, next) => {
   const editMode = req.query.edit;
   if (!editMode) {

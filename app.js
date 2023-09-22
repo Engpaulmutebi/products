@@ -22,11 +22,16 @@ app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 app.use(errorController.get404);
-sequelize.sync()
-.then(result =>{
-    // console.log(result);
-    app.listen(3000);
-})
-.catch(error =>{console.log(error)});
+// sequelize.sync()
+// .then(result =>{
+//     // console.log(result);
+app.listen(3000);
+// })
+// .catch(error =>{console.log(error)});
+sequelize.authenticate().then(() => {
+    console.log('Connection has been established successfully.');
+ }).catch((error) => {
+    console.error('Unable to connect to the database: ', error);
+ });
 
 
