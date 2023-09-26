@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const errorController = require('./controllers/error');
 // const Sequelize = require('sequelize');
 const Sequelize= require('./util/database');
+const Product = require('./models/product');
+const User = require('./models/user');
 
 const app = express();
 
@@ -22,11 +24,13 @@ app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 app.use(errorController.get404);
+Product.belongsTo(User,{Constraints: true,onDelete: 'CASCADE'});
+User.hasMany(Product);
 
 // app.listen(3000);
-Sequelize.sync()
-.then(result=>{
-    console.log(result)
+Sequelize.sync({force:true})
+.then(()=>{
+    console.log("updated succesfully")
     app.listen(3000);
 })
 .catch(error=>console.log(error));
