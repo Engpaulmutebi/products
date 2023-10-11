@@ -19,6 +19,7 @@ const productSchema = new Schema({
         required: true
     }
 });
+module.exports = mongoose.model('Product', productSchema);
 // const Sequelize = require('sequelize');
 
 // const sequelize = require('../util/database');
