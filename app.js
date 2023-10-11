@@ -21,7 +21,7 @@ app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 app.use(errorController.get404);
 
-mongoose.connect('mongodb+srv://paul:root@cluster0.3fy7uyj.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('mongodb://localhost:27017/admin')
 .then(result => {
     app.listen(3000);
 })
