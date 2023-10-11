@@ -19,9 +19,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
-
 app.use(errorController.get404);
 
+mongoose.connect('mongodb+srv://paul:root@cluster0.3fy7uyj.mongodb.net/?retryWrites=true&w=majority')
+.then(result => {
+    app.listen(3000);
+})
+.catch(err => {console.log(err);});
 
-app.listen(3000);
+
+
 
