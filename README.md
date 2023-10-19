@@ -1,2 +1,2 @@
 # products
-this describes how to add products in the chart using node.js
+This describes how to add products in the chart using node.js
